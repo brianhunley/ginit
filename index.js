@@ -38,18 +38,26 @@ const getGithubToken = async () => {
 
 const run = async () => {
   try {
-    // Retrieve & Set Authentication Token
+    // // Retrieve & Set Authentication Token
     const token = await getGithubToken();
     github.githubAuth(token);
 
-    // Create remote repository
-    const url = await repo.createRemoteRepo();
+    // get organization list
+    // github.getOrgList();
 
-    // Create .gitignore file
-    await repo.createGitignore();
+    // get repo list?
+    github.getRepoList();
 
-    // Set up local repository and push to remote
-    await repo.setupRepo(url);
+    // repos.forEach((repo) => console.log(repo.name));
+
+    // // Create remote repository
+    // const url = await repo.createRemoteRepo();
+
+    // // Create .gitignore file
+    // await repo.createGitignore();
+
+    // // Set up local repository and push to remote
+    // await repo.setupRepo(url);
 
     console.log(chalk.green('All done!'));
   } catch (err) {
